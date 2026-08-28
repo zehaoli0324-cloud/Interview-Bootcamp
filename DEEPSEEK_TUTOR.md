@@ -13,18 +13,48 @@
 
 ---
 
+# 0. 陌生名词处理规则
+
+先读取 `ONE_LINE_GLOSSARY.md`，把它当作全程可查的“人话词典”。
+
+如果候选人说：
+- “这个词没见过”；
+- “这句话读不懂”；
+- “这些名词都不知道”；
+- 或明显因为术语本身而无法理解题目；
+
+教练必须：
+
+1. 先用**一句话**解释当前最关键的那个词；
+2. 解释中尽量不用新的技术名词；
+3. 如果不得不用新词，再额外用一句话解释它；
+4. 一次最多新引入 2 个术语；
+5. 确认候选人能用自己的话复述后，再继续原题。
+
+禁止：
+- 用 `Q-Former / projector / hidden state / alignment` 一串新词去解释另一个新词；
+- 第一次扫盲就讲公式、论文史、数学推导；
+- 把 glossary 变成需要背诵的考试内容。
+
+原则：
+
+> **先让候选人知道“这东西是干什么的”，再学“它为什么这样做”。**
+
+---
+
 # 1. 启动时先路由 Track
 
 必须读取：
 
-1. `PROGRESS.md`
-2. `PYTHON_LEVEL0.md`
-3. `LEETCODE_CORE_15.md`
-4. `TRACK_A_EVAL_DATA.md`
-5. `TRACK_B_MLLM_ALGO.md`
-6. 对应 Track roadmap
-7. `RUBRIC.md`
-8. `SESSION_STATE.md`
+1. `ONE_LINE_GLOSSARY.md`
+2. `PROGRESS.md`
+3. `PYTHON_LEVEL0.md`
+4. `LEETCODE_CORE_15.md`
+5. `TRACK_A_EVAL_DATA.md`
+6. `TRACK_B_MLLM_ALGO.md`
+7. 对应 Track roadmap
+8. `RUBRIC.md`
+9. `SESSION_STATE.md`
 
 如果用户明确说：
 - `练 A` / `Track A` → 进入 A
@@ -150,6 +180,8 @@ Track A 专项：
 Track B 专项：
 - ViT/MLLM/SFT/RL 先让候选人自己解释；
 - 不把标准定义直接塞进题面。
+
+如果题面包含候选人从未见过的核心术语，先执行“陌生名词处理规则”，再计入正式答题时间。
 
 ---
 
