@@ -1,186 +1,155 @@
-# Medical MLLM Algorithm Interview Bootcamp V3
+# Interview Bootcamp — Dual Track Medical LLM / MLLM
 
-> 面向 **大模型算法实习生（医疗方向）** 的 7 天定向训练。
->
-> 当前目标不是把候选人包装成已经成熟的算法工程师，而是：**从 Python/算法基础起步，把 Coding 拉过面试生存线；同时建立 ViT / MLLM / SFT / RL 的真实技术对话能力，并保留医疗科研与 Eval 的差异化优势。**
+这个仓库现在明确服务两个不同岗位，**共享 Python/Coding 基础，但岗位专项完全分轨。**
 
----
+## Track A — A04613A 医疗大模型评测 / 数据工程师
 
-# V3 为什么重构
+核心：
 
-岗位核心已经从“医疗大模型评测 / 数据工程”转向：
+> **医疗 Eval / Benchmark + Data Engineering + LLM-as-Judge + Agent/RAG + 自动化评测系统**
 
-1. 医疗领域大模型预训练、SFT、强化训练；
-2. 模型业务效果与落地；
-3. CV / MLLM / ViT / Detail Caption；
-4. 优秀 Coding、数据结构与基础算法。
+训练权重：
+- Python Coding + Data Engineering：40%
+- Eval / Benchmark / LLM-as-Judge：30%
+- LLM App / Agent / RAG：15%
+- Medical / Multimodal Eval：10%
+- Project communication：5%
 
-因此训练权重改为：
+入口：
+- [`TRACK_A_EVAL_DATA.md`](./TRACK_A_EVAL_DATA.md)
+- [`ROADMAP_TRACK_A_7D.md`](./ROADMAP_TRACK_A_7D.md)
+- [`MOCK_TRACK_A.md`](./MOCK_TRACK_A.md)
 
-- **Python + Algorithm Coding：约 50%**
-- **MLLM / CV / ViT：约 25%**
-- **SFT / LoRA / Preference / RL：约 15%**
-- **Medical Eval / Benchmark / System：约 10%**
-
-这个比例不是每天机械固定。最初 1–2 天如果 Python 基础仍不稳定，Coding 会临时占更高比例；一旦通过 Foundation Gate，立即减少基础语法练习。
+Track A 不把 ViT training、Detail Caption 工程、PPO/GRPO 当 P0。
 
 ---
 
-# 四层训练结构
+## Track B — A180084A 医疗大模型算法实习生
 
-## Level 0 — Python Foundation
+核心：
 
-文件：[`PYTHON_LEVEL0.md`](./PYTHON_LEVEL0.md)
+> **Algorithm Coding + CV/ViT/MLLM + SFT/LoRA + RL/Post-training**
 
-解决：
+训练权重：
+- Algorithm Coding：45%
+- CV / ViT / MLLM：30%
+- SFT / LoRA / RL：15%
+- Medical / Research / Eval：10%
 
-- 题目和示例看不懂；
-- `list / index / for / if / function / dict` 不熟；
-- 还不能把简单思路翻译成 Python。
+入口：
+- [`TRACK_B_MLLM_ALGO.md`](./TRACK_B_MLLM_ALGO.md)
+- [`ROADMAP_TRACK_B_7D.md`](./ROADMAP_TRACK_B_7D.md)
+- [`MOCK_TRACK_B.md`](./MOCK_TRACK_B.md)
 
-**Level 0 是跳板，不是长期题库。** Z15–Z18 至少 3/4 独立完成后就退出。
-
-## Level 1/2 — LeetCode / 牛客算法主线
-
-文件：[`LEETCODE_CORE_15.md`](./LEETCODE_CORE_15.md)
-
-保留原来的 15 个锚点，但它们现在是 **Foundation 之后的目标**：
-
-- HashMap / Stack / String；
-- Linked List；
-- Sliding Window；
-- Interval；
-- Tree / Grid BFS-DFS；
-- Heap / Top-K；
-- Binary Search；
-- LRU；
-- 少量 DP / 括号 / sqrt；
-- LC25 只作为 stretch。
-
-不刷 Hot100 全套。
-
-## Level 3 — MLLM / ViT 专项
-
-文件：[`MLLM_VIT_CORE.md`](./MLLM_VIT_CORE.md)
-
-覆盖：
-
-- patch embedding / position embedding；
-- self-attention；
-- ViT vs CNN；
-- vision encoder → projector/resampler → LLM；
-- LLaVA 类 alignment / instruction tuning；
-- Q-Former / resampler；
-- Detail Caption；
-- high-resolution / tiling / token cost；
-- medical hallucination / grounding / evaluation。
-
-## Level 4 — Post-training
-
-文件：[`POSTTRAINING_SFT_RL_CORE.md`](./POSTTRAINING_SFT_RL_CORE.md)
-
-覆盖：
-
-- pretraining vs SFT；
-- LoRA；
-- instruction / preference data；
-- DPO；
-- reward model / verifier；
-- PPO / GRPO 的面试级直觉；
-- KL；
-- reward hacking；
-- 医疗模型 reward / safety 设计。
-
-医疗 Eval / Benchmark 强项继续保留在 [`CORE_12.md`](./CORE_12.md)，但不再占据训练主线。
+Track B 不允许用 Benchmark/Eval 强项替代 Coding、ViT/MLLM 或训练基础。
 
 ---
 
-# Tutor V3：三种模式
+# Shared Core — 只学一次
 
-核心协议：[`DEEPSEEK_TUTOR.md`](./DEEPSEEK_TUTOR.md)
+两个岗位共享：
 
-虽然文件名为了兼容旧仓库保留 `DEEPSEEK_TUTOR.md`，V3 实际适用于 ChatGPT / DeepSeek / Claude 等教练模型。
+- [`PYTHON_LEVEL0.md`](./PYTHON_LEVEL0.md)：从读题、list/index、for/if/function/dict 起步；
+- [`LEETCODE_CORE_15.md`](./LEETCODE_CORE_15.md)：常见 Easy/Medium 算法锚点；
+- complexity / debugging / edge cases；
+- 医疗场景基本理解。
 
-### FOUNDATION MODE
+共享 Coding 状态记录在 [`PROGRESS.md`](./PROGRESS.md)。
 
-当候选人连题意、下标、循环、函数都不理解时：
-
-**解释一个最小概念 → 30 秒 recall → 3–8 行 mini exercise → 自己完成 → 再升级。**
-
-不会强行模拟面试，也不会一次倒一整章 Python。
-
-### INTERVIEW MODE
-
-基础可用后：
-
-**一次一道题 → 无提前提示 → 候选人提交 → 判题 → 最小反例 → self-debug → 严格评分。**
-
-### TEACHING MODE
-
-提交后发现知识缺口，或候选人明确说“完全不会”时进入。
-
-只修**一个最主要根因**，修完立即回到练习。
+**一个模式在 Track A 已经真正 MASTERED，Track B 不重新从头刷，只在 Mock 回测。**
 
 ---
 
-# 7 天路径
+# Tutor V4
 
-详见 [`ROADMAP_7D.md`](./ROADMAP_7D.md)。
+主协议：[`DEEPSEEK_TUTOR.md`](./DEEPSEEK_TUTOR.md)
 
-简版：
+虽然保留旧文件名用于兼容，但现在是通用 **Tutor V4**，支持：
 
-| Day | 主线 | 目标 |
-|---|---|---|
-| 1 | Python Level 0 + Two Sum 暴力版 | 从看懂题到能写最小函数 |
-| 2 | Easy 算法 + ViT 基础 | HashMap/Stack/链表 + patch/token/attention |
-| 3 | 高频 Medium + MLLM 架构 | Sliding window / binary search + vision→LLM |
-| 4 | BFS/DFS/Heap + Detail Caption | 进入常见算法主战场 + 高分辨率医疗视觉 |
-| 5 | LRU/强化 Coding + SFT/LoRA | 数据结构实现 + 最小 post-training 能力 |
-| 6 | Mixed Coding + DPO/RL + Medical Eval | 陌生题面迁移 + 训练方案表达 |
-| 7 | 两轮技术面 Mock | Coding + MLLM + training + 医疗 domain 综合 |
+1. **岗位路由**：Track A / Track B；
+2. **FOUNDATION MODE**：基础 Python/读题不会时先教学；
+3. **INTERVIEW MODE**：会基础后按真实面试单题训练；
+4. **TEACHING MODE**：只修一个根因；
+5. **Counterexample-first debugging**；
+6. **Hint 1/2/3 分级**；
+7. **Delayed mastery**；
+8. **Shared Coding / Track-specific readiness 分开记录**。
 
----
+训练时直接说：
 
-# 文件导航
+```text
+练 Track A
+```
 
-- [`START_TUTOR.md`](./START_TUTOR.md)：给 ChatGPT/其他模型的启动指令。
-- [`DEEPSEEK_TUTOR.md`](./DEEPSEEK_TUTOR.md)：Tutor V3 自适应教学协议。
-- [`PYTHON_LEVEL0.md`](./PYTHON_LEVEL0.md)：从零 Coding 基础。
-- [`LEETCODE_CORE_15.md`](./LEETCODE_CORE_15.md)：算法锚点。
-- [`MLLM_VIT_CORE.md`](./MLLM_VIT_CORE.md)：MLLM/ViT 专项。
-- [`POSTTRAINING_SFT_RL_CORE.md`](./POSTTRAINING_SFT_RL_CORE.md)：SFT/LoRA/RL 专项。
-- [`ROADMAP_7D.md`](./ROADMAP_7D.md)：7 天路径。
-- [`RUBRIC.md`](./RUBRIC.md)：V3 分层评分。
-- [`PROGRESS.md`](./PROGRESS.md)：V3 能力地图。
-- [`SESSION_STATE.md`](./SESSION_STATE.md)：跨对话状态恢复。
-- [`CORE_12.md`](./CORE_12.md)：Medical Eval / Benchmark / System 优势模块。
-- [`MOCK_INTERVIEW.md`](./MOCK_INTERVIEW.md)：全真模拟。
+或：
+
+```text
+练 Track B
+```
+
+然后一次只处理当前一道题/一个概念。
 
 ---
 
-# 最终通过线
+# Track A 专项文件
 
-目标不是“所有知识都学完”，而是达到：
+- [`TRACK_A_EVAL_DATA.md`](./TRACK_A_EVAL_DATA.md)：JD → 能力 → 题库 → 通过线
+- [`CORE_12.md`](./CORE_12.md)：Evaluator / Judge / Batch / Benchmark / System 核心题
+- [`ROADMAP_TRACK_A_7D.md`](./ROADMAP_TRACK_A_7D.md)
+- [`MOCK_TRACK_A.md`](./MOCK_TRACK_A.md)
 
-### Coding
-- Python Foundation 全部通过；
-- Easy 能独立完成；
-- 常见 Medium 能识别模式并形成主解；
-- 陌生题不会直接空白，能从 brute force 推到优化；
-- LC3 / LC200 / LC215 至少 PASS；LC146 至少能完整解释实现结构。
+重点：
+- medical evaluator coding；
+- JSONL / cleaning / aggregation；
+- async / retry / resume / idempotency；
+- LLM-as-Judge calibration；
+- independent truth；
+- shortcut / leakage；
+- medical safety slices；
+- RAG / Agent / tool calling evaluation；
+- data provenance / versioning。
 
-### MLLM
-- 能从 image → vision encoder → bridge → LLM 画出数据流；
-- ViT 核心组件能解释；
-- 能讨论 high-resolution、Detail Caption、hallucination、grounding；
-- 至少完成两个 tensor/数据设计小题。
+---
 
-### Post-training
-- 能解释 SFT、LoRA、preference、DPO、PPO/GRPO 的关系；
-- 能设计一个最小医疗 SFT/LoRA 实验；
-- 能指出 reward hacking 与医疗 safety 风险。
+# Track B 专项文件
 
-### 综合
-- 至少一次 60 分钟 Mock：Coding 不出现基础性崩溃，MLLM/Post-training 能形成结构化答案，医疗科研/Eval 能作为加分项展开。
+- [`TRACK_B_MLLM_ALGO.md`](./TRACK_B_MLLM_ALGO.md)
+- [`MLLM_VIT_CORE.md`](./MLLM_VIT_CORE.md)
+- [`POSTTRAINING_SFT_RL_CORE.md`](./POSTTRAINING_SFT_RL_CORE.md)
+- [`ROADMAP_TRACK_B_7D.md`](./ROADMAP_TRACK_B_7D.md)
+- [`MOCK_TRACK_B.md`](./MOCK_TRACK_B.md)
 
-**V3 的目标：把“稀缺生命科学背景 + 强科研判断”前面的 Coding / MLLM 门槛尽快跨过去。**
+重点：
+- data structures / LeetCode；
+- patch embedding / attention / ViT；
+- vision encoder → projector → LLM；
+- LLaVA / Q-Former；
+- Detail Caption / high-resolution；
+- SFT / LoRA / DPO；
+- PPO / GRPO / rollout / KL / reward hacking。
+
+---
+
+# 统一状态与入口
+
+- [`PROGRESS.md`](./PROGRESS.md)：Shared + Track A + Track B 三层状态
+- [`SESSION_STATE.md`](./SESSION_STATE.md)：跨 session 恢复
+- [`ROADMAP_7D.md`](./ROADMAP_7D.md)：双轨路由
+- [`MOCK_INTERVIEW.md`](./MOCK_INTERVIEW.md)：双轨 Mock 路由
+- [`START_TUTOR.md`](./START_TUTOR.md)：给其他教练模型的启动 Prompt
+
+---
+
+# 核心原则
+
+> **A04613A 和 A180084A 不是同一个岗位换名字。**
+
+Track A 要证明：
+
+> 我能建设可信、可自动化、可追溯的医疗 LLM 评测与数据系统，并通过分析推动模型迭代。
+
+Track B 要证明：
+
+> 我具备进入医疗多模态模型训练团队的 Coding、ViT/MLLM 与 post-training 技术基础。
+
+因此最终 readiness 必须分别判定，不能互相抵分。
