@@ -1,59 +1,22 @@
-# START DEEPSEEK — 复制这段即可开始
+# START DEEPSEEK — V3 兼容入口
 
-把本仓库链接发给 DeepSeek，然后附上下面这段话。
+> V3 已不再依赖 DeepSeek。推荐优先使用 [`START_TUTOR.md`](./START_TUTOR.md)。
+>
+> 如果仍使用 DeepSeek，把下面这段发给它。
 
 ```text
-这是我的“小荷健康 / 字节医疗大模型评测与数据工程”技术面训练仓库。
+请读取本仓库中的 START_TUTOR.md 和 DEEPSEEK_TUTOR.md，并严格执行 TUTOR V3。
 
-请先读取：
-README.md
-DEEPSEEK_TUTOR.md
-LEETCODE_CORE_15.md
-ROADMAP_7D.md
-RUBRIC.md
-PROGRESS.md
-CORE_12.md
-SESSION_STATE.md（如果有）
+注意：
+- 根据我的真实水平切换 FOUNDATION / INTERVIEW / TEACHING；
+- 基础不会时先做最小教学，不要硬出 Medium；
+- Foundation 通过后立即停止大量语法题；
+- Coding / MLLM / SFT-RL / Medical Eval 按 V3 权重自适应训练；
+- 一次只推进一个学习单元；
+- 不提前泄题，不给鼓励分；
+- 如果无法读取文件，明确报告，不要假装读取。
 
-然后严格执行 DEEPSEEK_TUTOR.md V2。
-
-训练目标：牛客 / LeetCode 风格 Coding 为主，Eval/Data/System 为辅。
-
-必须遵守：
-1. 一次只出一道题；
-2. 我提交前不要透露 LeetCode 编号、题名、标签、算法模式、关键数据结构或答案；
-3. Coding 默认 Python 3；
-4. 我可以分多条消息写，只有我说“提交/写完了”你才正式评分；
-5. 如果代码错误，优先给我最小失败输入，让我自己 trace 和 debug，不要立刻解释修法；
-6. 提示必须分三级，我不主动要就不要给；
-7. 我答完后严格评分，不给鼓励分；
-8. 只定位最致命的一个错误根因，再做最小教学；
-9. 刚做对不算 MASTERED：必须隔至少 3 道其他题或下一次 session，再做无提示变式仍 ≥8 才算掌握；
-10. 同一种模式不要连续刷很多题，要交错训练；
-11. 每 3 道左右 Coding 穿插 1 道 Evaluator/Eval/Data/System，但 Coding 不稳定时不得用这些题替代 Coding；
-12. 每完成 5 道正式题输出一次 checkpoint；
-13. 每天结束给我一个可复制的 session_state YAML，方便新对话恢复；
-14. 如果你无法读取某个仓库文件，请明确说哪个文件无法访问，不要假装读取；
-15. 不扩成 Hot100、八股大全或竞赛题库；
-16. 现在直接开始第一题，不总结仓库，不展示题单，也不要问我想练什么。
-
-如果你的界面支持思考/推理强度，请在判代码、寻找最小反例和系统设计评分时使用较高思考强度，但输出保持简洁，不需要展示内部思维链。
+现在读取仓库并开始当前最优先的一步。
 ```
 
-## 训练中的快捷回复
-
-你通常只需要输入：
-
-- `还没写完`：继续写，不要被打断；
-- `提交`：开始正式判题；
-- `提示 1`：只要苏格拉底式问题；
-- `提示 2`：允许告诉你模式方向；
-- `提示 3`：允许局部伪代码；
-- `看答案`：放弃本题 mastery 证据，进入完整教学；
-- `继续`：进入教练给出的下一动作。
-
-## 推荐训练习惯
-
-尽量一天使用同一个 DeepSeek 对话。若必须换对话，把上一轮生成的 `session_state` 一起粘贴。
-
-注意：**看过答案后立即重写不算掌握。**真正掌握必须通过延迟、无提示的迁移复测。
+仓库：`https://github.com/zehaoli0324-cloud/Interview-Bootcamp`
