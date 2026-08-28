@@ -1,14 +1,54 @@
 # Interview Bootcamp — Dual Track Medical LLM / MLLM
 
-这个仓库现在明确服务两个不同岗位，**共享 Python/Coding 基础，但岗位专项完全分轨。**
+这个仓库服务两个不同岗位，**共享 Python/Coding 基础，但岗位专项完全分轨。**
 
-## 第一次打开仓库：先看这个
+当前教学协议：**Tutor V5 — Pattern-First Python**。
 
-如果你发现题目、缩写和技术名词几乎都没见过，**先不要硬啃题库**，先读：
+---
 
-- [`ONE_LINE_GLOSSARY.md`](./ONE_LINE_GLOSSARY.md)：一句话扫盲手册，把 Coding、Eval/Data、RAG/Agent、ViT/MLLM、SFT/RL 和工程术语先翻译成人话。
+## 第一次打开仓库：先看这两个文件
 
-它不是要背的教材，而是一张“名词地图”：第一次看到 `HashMap`、`idempotency`、`LLM-as-Judge`、`Q-Former`、`GRPO` 等词时，先知道它大概是干什么的，真正训练到时再展开。
+如果题目、缩写和技术名词几乎都没见过，不要硬啃题库：
+
+1. [`ONE_LINE_GLOSSARY.md`](./ONE_LINE_GLOSSARY.md)：一句话扫盲，把 Coding、Eval/Data、RAG/Agent、ViT/MLLM、SFT/RL 和工程术语翻译成人话。
+2. [`LEETCODE101_PYTHON_PATTERN_MAP.md`](./LEETCODE101_PYTHON_PATTERN_MAP.md)：把《LeetCode 101》的算法分类方式转成我们的 Python 模式地图。
+
+`ONE_LINE_GLOSSARY.md` 是“名词地图”；`LEETCODE101_PYTHON_PATTERN_MAP.md` 是“算法地图”。
+
+---
+
+# Shared Coding：只用 Python，按 Pattern 学
+
+两个岗位都只使用 **Python 3**。
+
+《LeetCode 101》只作为：
+
+> **算法模式教材 + Transfer/Retest 题池**
+
+不学习 C++ 语法，不要求刷完 101 道题。
+
+新的算法学习闭环：
+
+```text
+一句话扫盲
+→ 极小例子手推
+→ Python mini exercise
+→ Core Anchor
+→ 说清 pattern / state / invariant
+→ 《LeetCode 101》同模式 Transfer Variant
+→ 隔 ≥3 个训练单元或下一 session Delayed Retest
+→ ≥8 才 MASTERED
+```
+
+核心原则：
+
+> **做对一道题，不等于学会一种模式。**
+
+算法优先级见：
+- [`LEETCODE101_PYTHON_PATTERN_MAP.md`](./LEETCODE101_PYTHON_PATTERN_MAP.md)
+- [`LEETCODE_CORE_15.md`](./LEETCODE_CORE_15.md)
+
+Shared Coding 状态跨 Track 复用。
 
 ---
 
@@ -29,6 +69,8 @@
 - [`TRACK_A_EVAL_DATA.md`](./TRACK_A_EVAL_DATA.md)
 - [`ROADMAP_TRACK_A_7D.md`](./ROADMAP_TRACK_A_7D.md)
 - [`MOCK_TRACK_A.md`](./MOCK_TRACK_A.md)
+
+Track A 的算法目标：Coding 不成为否决项，并能把同样的 Python 模式迁移到 dedup、aggregation、top-k error、batch queue、logs 等工程问题。
 
 Track A 不把 ViT training、Detail Caption 工程、PPO/GRPO 当 P0。
 
@@ -51,43 +93,43 @@ Track A 不把 ViT training、Detail Caption 工程、PPO/GRPO 当 P0。
 - [`ROADMAP_TRACK_B_7D.md`](./ROADMAP_TRACK_B_7D.md)
 - [`MOCK_TRACK_B.md`](./MOCK_TRACK_B.md)
 
+Track B 的算法目标更高：Easy 稳定、常见 Medium 不空白、能识别模式、解释 complexity/invariant，并通过陌生题面迁移。
+
 Track B 不允许用 Benchmark/Eval 强项替代 Coding、ViT/MLLM 或训练基础。
 
 ---
 
 # Shared Core — 只学一次
 
-两个岗位共享：
-
-- [`ONE_LINE_GLOSSARY.md`](./ONE_LINE_GLOSSARY.md)：第一次遇到名词时查一句话解释；
-- [`PYTHON_LEVEL0.md`](./PYTHON_LEVEL0.md)：从读题、list/index、for/if/function/dict 起步；
-- [`LEETCODE_CORE_15.md`](./LEETCODE_CORE_15.md)：常见 Easy/Medium 算法锚点；
+- [`ONE_LINE_GLOSSARY.md`](./ONE_LINE_GLOSSARY.md)：陌生词一句话解释；
+- [`PYTHON_LEVEL0.md`](./PYTHON_LEVEL0.md)：读题、list/index、变量、for/if/function/dict；
+- [`LEETCODE101_PYTHON_PATTERN_MAP.md`](./LEETCODE101_PYTHON_PATTERN_MAP.md)：Pattern → Anchor → Transfer → Retest；
+- [`LEETCODE_CORE_15.md`](./LEETCODE_CORE_15.md)：最小 Anchor 集；
 - complexity / debugging / edge cases；
 - 医疗场景基本理解。
 
-共享 Coding 状态记录在 [`PROGRESS.md`](./PROGRESS.md)。
-
-**一个模式在 Track A 已经真正 MASTERED，Track B 不重新从头刷，只在 Mock 回测。**
+一个算法模式在 Track A 已真正 MASTERED，Track B 不重新从头学，只在 Mock/retention 回测。
 
 ---
 
-# Tutor V4
+# Tutor V5
 
 主协议：[`DEEPSEEK_TUTOR.md`](./DEEPSEEK_TUTOR.md)
 
-虽然保留旧文件名用于兼容，但现在是通用 **Tutor V4**，支持：
+V5 支持：
 
-1. **岗位路由**：Track A / Track B；
-2. **FOUNDATION MODE**：基础 Python/读题不会时先教学；
-3. **INTERVIEW MODE**：会基础后按真实面试单题训练；
-4. **TEACHING MODE**：只修一个根因；
-5. **Counterexample-first debugging**；
-6. **Hint 1/2/3 分级**；
-7. **Delayed mastery**；
-8. **Shared Coding / Track-specific readiness 分开记录**；
-9. **陌生术语先一句话扫盲**，不允许用更多陌生术语解释陌生术语。
+1. Track A / Track B 岗位路由；
+2. FOUNDATION MODE：Python/题意不会时先教学；
+3. TEACHING MODE：一次只修一个根因；
+4. INTERVIEW MODE：正式单题面试；
+5. 陌生术语先一句话扫盲；
+6. **Pattern-First**：Anchor 后必须做同模式 Transfer；
+7. Counterexample-first debugging；
+8. Hint 1/2/3；
+9. Delayed mastery；
+10. Shared Coding / Track-specific readiness 分开记录。
 
-训练时直接说：
+训练时说：
 
 ```text
 练 Track A
@@ -99,27 +141,39 @@ Track B 不允许用 Benchmark/Eval 强项替代 Coding、ViT/MLLM 或训练基�
 练 Track B
 ```
 
-然后一次只处理当前一道题/一个概念。
+然后一次只处理当前题/当前概念。
+
+---
+
+# 《LeetCode 101》怎么用
+
+我们不按书从第 1 页刷到最后，而是在当前模式需要时读取对应章节。
+
+当前高优先级映射：
+
+- 第 3 章：Two Pointers / Sliding Window
+- 第 4 章：Binary Search
+- 第 5 章：Quickselect / Top-K 思想
+- 第 6 章：DFS / BFS
+- 第 7 章：只取 Basic DP
+- 第 11 章：Stack / Queue / Heap / Hash Table 等数据结构
+- 第 13 章：Linked List
+- 第 14 章：Tree Traversal
+
+贪心作为 P1；Backtracking、Union-Find、复杂 Graph 等后置。
+
+复杂 DP、数论、位运算大全、MST/最短路、竞赛级 Hard 当前不系统学习。
 
 ---
 
 # Track A 专项文件
 
-- [`TRACK_A_EVAL_DATA.md`](./TRACK_A_EVAL_DATA.md)：JD → 能力 → 题库 → 通过线
-- [`CORE_12.md`](./CORE_12.md)：Evaluator / Judge / Batch / Benchmark / System 核心题
+- [`TRACK_A_EVAL_DATA.md`](./TRACK_A_EVAL_DATA.md)
+- [`CORE_12.md`](./CORE_12.md)
 - [`ROADMAP_TRACK_A_7D.md`](./ROADMAP_TRACK_A_7D.md)
 - [`MOCK_TRACK_A.md`](./MOCK_TRACK_A.md)
 
-重点：
-- medical evaluator coding；
-- JSONL / cleaning / aggregation；
-- async / retry / resume / idempotency；
-- LLM-as-Judge calibration；
-- independent truth；
-- shortcut / leakage；
-- medical safety slices；
-- RAG / Agent / tool calling evaluation；
-- data provenance / versioning。
+重点：medical evaluator coding、JSONL、async/retry/resume/idempotency、Judge calibration、Benchmark、RAG/Agent Eval、provenance/versioning。
 
 ---
 
@@ -131,37 +185,24 @@ Track B 不允许用 Benchmark/Eval 强项替代 Coding、ViT/MLLM 或训练基�
 - [`ROADMAP_TRACK_B_7D.md`](./ROADMAP_TRACK_B_7D.md)
 - [`MOCK_TRACK_B.md`](./MOCK_TRACK_B.md)
 
-重点：
-- data structures / LeetCode；
-- patch embedding / attention / ViT；
-- vision encoder → projector → LLM；
-- LLaVA / Q-Former；
-- Detail Caption / high-resolution；
-- SFT / LoRA / DPO；
-- PPO / GRPO / rollout / KL / reward hacking。
+重点：data structures、ViT/MLLM、Detail Caption/high-resolution、SFT/LoRA/DPO、PPO/GRPO/reward hacking。
 
 ---
 
 # 统一状态与入口
 
-- [`PROGRESS.md`](./PROGRESS.md)：Shared + Track A + Track B 三层状态
+- [`PROGRESS.md`](./PROGRESS.md)：Shared + Track A + Track B 状态
 - [`SESSION_STATE.md`](./SESSION_STATE.md)：跨 session 恢复
 - [`ROADMAP_7D.md`](./ROADMAP_7D.md)：双轨路由
 - [`MOCK_INTERVIEW.md`](./MOCK_INTERVIEW.md)：双轨 Mock 路由
-- [`START_TUTOR.md`](./START_TUTOR.md)：给其他教练模型的启动 Prompt
+- [`START_TUTOR.md`](./START_TUTOR.md)：启动 Prompt
 
 ---
 
 # 核心原则
 
-> **A04613A 和 A180084A 不是同一个岗位换名字。**
+> **Python 是语言；Pattern 是算法能力；Track 决定岗位专项。**
 
-Track A 要证明：
+最终不是“刷过多少题”，而是面对陌生题时能：
 
-> 我能建设可信、可自动化、可追溯的医疗 LLM 评测与数据系统，并通过分析推动模型迭代。
-
-Track B 要证明：
-
-> 我具备进入医疗多模态模型训练团队的 Coding、ViT/MLLM 与 post-training 技术基础。
-
-因此最终 readiness 必须分别判定，不能互相抵分。
+> 读懂输入与约束 → 先给 brute force → 识别底层模式 → 写出可运行 Python → 解释复杂度和边界 → 在新题面再次迁移。
