@@ -1,59 +1,42 @@
-# PROGRESS — V3 Medical MLLM Algorithm Interview
+# PROGRESS — Dual-Track Interview Bootcamp
 
-> 只记录会影响下一步训练选择的信息。
-
-## 当前状态
+> Shared Coding 进度只记录一次；Track A / B 专项能力分别记录。
 
 ```yaml
-current_day: 1
-current_mode: FOUNDATION
-foundation_status: NOT_PASSED
-current_task: Z1
-biggest_risk: PYTHON_FOUNDATION
+active_track: A   # A or B
+foundation_status: LEARNING
+shared_coding_phase: FOUNDATION
 ```
 
 ---
 
-# Track A — Python Foundation
+# 1. Shared Foundation
 
-状态：`NOT_STARTED / LEARNING / PASSED`
-
+## Python Level 0
 - [ ] list / index
-- [ ] variable / expression
-- [ ] for loop
-- [ ] if condition
+- [ ] variable / assignment
+- [ ] for / range
+- [ ] if / comparison
 - [ ] function / return
-- [ ] dict key-value
-- [ ] Z15 frequency dict independent
-- [ ] Z16 last-position dict independent
-- [ ] Z17 complement reasoning independent
-- [ ] Z18 Two Sum brute force independent
+- [ ] dict / set
+- [ ] can read simple LeetCode statement
+- [ ] can hand-trace a tiny example
 
-**Foundation Gate：Z15–Z18 至少 3/4 独立完成 + 六个基础概念可解释。**
-
-通过后：
-
-```yaml
-foundation_status: PASSED
-```
-
-之后不要因为单个语法 bug 把整个训练退回 Level 0。
+Foundation Exit Gate：`PYTHON_LEVEL0.md` Z15–Z18 至少 3/4 独立完成。
 
 ---
 
-# Track B — Algorithm Coding
+# 2. Shared Coding Mastery
 
-状态：`NOT_STARTED / LEARNING / BORDERLINE / PASS_RETEST_DUE / MASTERED`
+状态：`NOT_STARTED → LEARNING → BORDERLINE → PASS/RETEST-DUE → MASTERED`
 
-## Easy / Foundation Algorithm
-
+## Level 1
 - [ ] LC1 HashMap
 - [ ] LC20 Stack
 - [ ] LC165 String parsing
-- [ ] LC206 Linked List reverse
+- [ ] LC206 Linked List
 
-## 高频 Medium
-
+## Level 2
 - [ ] LC3 Sliding Window
 - [ ] LC56 Interval
 - [ ] LC102 Tree BFS
@@ -62,143 +45,132 @@ foundation_status: PASSED
 - [ ] LC33 Binary Search
 - [ ] LC146 LRU
 
-## Stretch
-
+## Level 3
 - [ ] LC221 Basic DP
 - [ ] LC32 Parentheses
-- [ ] sqrt Binary Search / Newton
-- [ ] LC25 K-group Linked List
+- [ ] sqrt Binary/Newton
+- [ ] LC25 K-group linked list
 
-Mastery 仍要求延迟无提示复测。
-
-### Coding Retest Queue
-
-| Pattern | First pass | Hints | Earliest retest | Retest | Status |
-|---|---:|---:|---|---:|---|
-|  |  | 0 | after 3 other units / next session |  |  |
+MASTERED：首次无强提示 ≥8 → 隔至少 3 道其他题或下一 session → 无提示变式再次 ≥8。
 
 ---
 
-# Track C — MLLM / ViT
+# 3. Track A — A04613A Eval / Data
 
-状态：`NOT_STARTED / LEARNING / PASS / MASTERED`
-
-- [ ] M1 Image → patch tokens
-- [ ] M2 Patch embedding
-- [ ] M3 Position embedding
-- [ ] M4 Self-attention intuition
-- [ ] M5 ViT vs CNN
-- [ ] M6 Vision encoder → bridge → LLM
-- [ ] M7 LLaVA-style alignment / instruction tuning
-- [ ] M8 Q-Former / resampler
-- [ ] M9 Detail Caption
-- [ ] M10 High-resolution / tiling / token cost
-- [ ] M11 MLLM hallucination
-- [ ] M12 Medical MLLM evaluation
-
-### Practice
-
-- [ ] MX1 patch/token calculation
-- [ ] MX3 projector shape walkthrough
-- [ ] MX4 detail-caption schema OR MX5 high-res lesion design
-
-MLLM MASTERED：不同上下文/shape/医疗案例迁移后仍 ≥8。
-
----
-
-# Track D — SFT / LoRA / Preference / RL
-
-- [ ] P1 Pretraining vs SFT
-- [ ] P2 LoRA
-- [ ] P3 SFT data schema
-- [ ] P4 Packing / masking
-- [ ] P5 Preference data
-- [ ] P6 DPO intuition
-- [ ] P7 Reward model / verifier
-- [ ] P8 Why RL
-- [ ] P9 PPO interview intuition
-- [ ] P10 GRPO interview intuition
-- [ ] P11 KL
-- [ ] P12 Rollout cost
-
-### Practice
-
-- [ ] PX2 Minimal LoRA experiment
-- [ ] PX4 Medical RL reward
-- [ ] PX5 Reward hacking
-
----
-
-# Track E — Medical Eval / Benchmark / System
-
-只保持优势，不重复刷熟题。
-
-- [ ] B1 evaluator metrics
+## Coding / Engineering
+- [ ] B1 medical evaluator
 - [ ] B2 judge aggregation
-- [ ] B3 async/retry/resume
-- [ ] C1 medical model comparison
-- [ ] C2 shortcut/leakage
-- [ ] D1 scalable judge system
-- [ ] D2 continuous regression
+- [ ] B3 async batch evaluator
+- [ ] JSONL cleaning / dedup
+- [ ] grouped metrics
+- [ ] retry / checkpoint / idempotency
 
----
+## Eval / Benchmark
+- [ ] medical A/B comparison
+- [ ] LLM-as-Judge calibration
+- [ ] medical safety benchmark
+- [ ] shortcut / leakage audit
+- [ ] multi-turn / Agent evaluation
 
-# Attempt Log
+## Data / LLM System
+- [ ] medical data pipeline
+- [ ] synthetic data QC
+- [ ] provenance / versioning
+- [ ] RAG evaluation
+- [ ] tool calling / Agent trajectory
 
-| Date | Track | Task | Result/Score | Primary error | Hint | Next |
-|---|---|---|---:|---|---:|---|
-|  |  |  |  |  | 0 |  |
-
-## Primary Error Types
-
-Coding/Foundation：
-- `READING_INPUT`
-- `SYNTAX_API`
-- `INDEXING`
-- `CONTROL_FLOW`
-- `PATTERN_RECOGNITION`
-- `INVARIANT`
-- `IMPLEMENTATION`
-- `BOUNDARY`
-- `COMPLEXITY`
-- `DEBUGGING`
-- `EXPLANATION`
-
-MLLM/Post-training：
-- `CONCEPT`
-- `DATA_FLOW`
-- `TENSOR_SHAPE`
-- `TRAINING_OBJECTIVE`
-- `FAILURE_MODE`
-- `TRADEOFF`
-- `MEDICAL_TRANSFER`
-
-每个训练单元只记录一个主要根因。
-
----
-
-# Checkpoint Template
-
-```text
-Foundation: ...
-Coding: mastered / pass-retest / biggest gap
-MLLM: ...
-Post-training: ...
-Medical Eval: ...
-Biggest interview risk: ...
-Next priority: ...
+### Track A Mock
+```yaml
+track_a:
+  coding_engineering: null
+  eval_benchmark: null
+  data_system: null
+  llm_app_medical: null
+  overall: null
+  verdict: NOT_RUN
 ```
 
 ---
 
-# Final Gate
+# 4. Track B — A180084A MLLM Algorithm
 
-- [ ] Foundation PASSED
-- [ ] Easy Coding 不再因题意/语法崩溃
-- [ ] LC3 / LC200 / LC215 至少 PASS
-- [ ] MLLM M1–M8 大部分可独立解释
-- [ ] Detail Caption / high-resolution / hallucination 可回答
-- [ ] SFT / LoRA / DPO / PPO-GRPO 关系不混乱
-- [ ] 至少完成 1 个 LoRA 实验设计
-- [ ] 至少完成 1 个医疗 RL reward 设计
-- [ ] 一轮 60 min Mock 无基础性崩溃
+## MLLM / ViT
+- [ ] patch embedding / token count
+- [ ] positional embedding
+- [ ] self-attention / QKV
+- [ ] CNN vs ViT
+- [ ] ViT training / finetuning
+- [ ] vision encoder → projector → LLM
+- [ ] Q-Former / resampler
+- [ ] Detail Caption
+- [ ] high-resolution / tiling
+- [ ] hallucination / grounding
+
+## Post-training
+- [ ] pretraining vs SFT
+- [ ] LoRA / PEFT
+- [ ] preference data / DPO
+- [ ] reward model
+- [ ] PPO basics
+- [ ] GRPO basics
+- [ ] rollout / KL
+- [ ] reward hacking
+- [ ] medical reward design
+
+### Track B Mock
+```yaml
+track_b:
+  coding: null
+  vit_mllm: null
+  post_training: null
+  medical_research: null
+  overall: null
+  verdict: NOT_RUN
+```
+
+---
+
+# 5. Attempt Log
+
+| Date | Track | Skill/Problem | Score | Primary error | Hint | Next |
+|---|---|---|---:|---|---:|---|
+|  |  |  |  |  | 0 |  |
+
+Primary error only one:
+- SYNTAX_API
+- READING_COMPREHENSION
+- PATTERN_RECOGNITION
+- INVARIANT
+- IMPLEMENTATION
+- BOUNDARY
+- COMPLEXITY
+- DEBUGGING
+- EVAL_REASONING
+- DATA_ENGINEERING
+- MLLM_CONCEPT
+- TRAINING_CONCEPT
+
+---
+
+# 6. Retest Queue
+
+| Shared/Track | Skill | First score | Earliest retest | Retest | Status |
+|---|---|---:|---|---:|---|
+|  |  |  |  |  |  |
+
+---
+
+# 7. Current Session
+
+```yaml
+active_track: A
+mode: FOUNDATION
+current_skill: list_index
+questions_completed: 0
+biggest_risk: ""
+next_priority: ""
+```
+
+原则：
+
+> Track A 和 Track B 分开判定岗位 readiness；只有 Shared Foundation/Coding 可以互相复用。
