@@ -2,6 +2,16 @@
 
 这个仓库现在明确服务两个不同岗位，**共享 Python/Coding 基础，但岗位专项完全分轨。**
 
+## 第一次打开仓库：先看这个
+
+如果你发现题目、缩写和技术名词几乎都没见过，**先不要硬啃题库**，先读：
+
+- [`ONE_LINE_GLOSSARY.md`](./ONE_LINE_GLOSSARY.md)：一句话扫盲手册，把 Coding、Eval/Data、RAG/Agent、ViT/MLLM、SFT/RL 和工程术语先翻译成人话。
+
+它不是要背的教材，而是一张“名词地图”：第一次看到 `HashMap`、`idempotency`、`LLM-as-Judge`、`Q-Former`、`GRPO` 等词时，先知道它大概是干什么的，真正训练到时再展开。
+
+---
+
 ## Track A — A04613A 医疗大模型评测 / 数据工程师
 
 核心：
@@ -49,6 +59,7 @@ Track B 不允许用 Benchmark/Eval 强项替代 Coding、ViT/MLLM 或训练基�
 
 两个岗位共享：
 
+- [`ONE_LINE_GLOSSARY.md`](./ONE_LINE_GLOSSARY.md)：第一次遇到名词时查一句话解释；
 - [`PYTHON_LEVEL0.md`](./PYTHON_LEVEL0.md)：从读题、list/index、for/if/function/dict 起步；
 - [`LEETCODE_CORE_15.md`](./LEETCODE_CORE_15.md)：常见 Easy/Medium 算法锚点；
 - complexity / debugging / edge cases；
@@ -73,7 +84,8 @@ Track B 不允许用 Benchmark/Eval 强项替代 Coding、ViT/MLLM 或训练基�
 5. **Counterexample-first debugging**；
 6. **Hint 1/2/3 分级**；
 7. **Delayed mastery**；
-8. **Shared Coding / Track-specific readiness 分开记录**。
+8. **Shared Coding / Track-specific readiness 分开记录**；
+9. **陌生术语先一句话扫盲**，不允许用更多陌生术语解释陌生术语。
 
 训练时直接说：
 
