@@ -1,292 +1,336 @@
-# ROADMAP 7D — 牛客 / LeetCode 风格冲刺版
+# ROADMAP 7D — Medical MLLM Algorithm Interview V3
 
-> 面试官已明确说明 Coding 类似牛客 / 力扣，因此本路线调整为：**Coding 约 75%，Eval/Data/System 约 25%。**
+> 默认每天 6–8 小时。如果只有 3–4 小时，保留每一天的 P0，不扩题。
 >
-> 每天默认 6–8 小时；如果只有 3–4 小时，只做标记为 P0 的内容。
-
-## 总原则
-
-每个算法模式都必须经历：
-
-**Learn → 小例子手推 → Closed-book → Timed Problem → 自测 → 评分 → Variant**
-
-只有：
-
-- 不看答案；
-- 不依赖 Hint 2/3；
-- 代码主逻辑正确；
-- 能说清复杂度和 invariant；
-- 同模式连续两次 ≥8/10；
-
-才记为 `MASTERED`。
-
-题库以 `LEETCODE_CORE_15.md` 为准。不要擅自扩 Hot100。
+> 默认权重：Coding 50% / MLLM 25% / Post-training 15% / Medical Eval 10%。
 
 ---
 
-# Day 1 — Python 现场 Coding + 四道基础反射
+# Day 1 — 从看懂代码到 Two Sum
 
-## Learn（60–90 min）
+## P0：Python Foundation（3–4 h）
 
-只补面试直接需要的 Python：
+使用 `PYTHON_LEVEL0.md`。
 
-- list / dict / set / tuple；
-- `enumerate / zip / sorted`；
-- `Counter / defaultdict / deque`；
-- 函数、循环、条件、异常；
-- 链表节点的基本写法；
-- 时间/空间复杂度怎么口述。
+只学：
+- list / index；
+- variable；
+- `for`；
+- `if`；
+- function / return；
+- dict。
 
-## P0 Practice
+顺序：
 
-按顺序做：
+`Z1–Z4 → Z5–Z9 → Z10–Z14 → Z15–Z18`
 
-1. LC1 模式 — HashMap；
-2. LC20 模式 — Stack；
-3. LC165 模式 — String parsing；
-4. LC206 模式 — Linked List。
+不要机械全做；会的跳过。
 
-前两题 15 min，后两题 15–20 min。
+## 核心结果
 
-## 每题固定动作
+必须做到：
+- 看懂输入输出；
+- 能自己 trace 两层循环；
+- 能写 Two Sum 暴力版；
+- 理解 `target - x` 是“补数”。
 
-- 先用 2–3 句话讲思路；
-- 写完整 Python；
-- 自己给 2 个测试；
-- 说复杂度；
-- 说明最容易错的边界。
+如果 Z15–Z18 至少 3/4 独立完成，立刻标 `FOUNDATION_PASSED`。
 
-## Exit Gate
+## MLLM 插针（60–90 min）
 
-4 题至少 3 题 ≥8，且 LC206 必须能独立写。
+只学 M1/M2：
+- 图像如何变成 patch tokens；
+- patch embedding。
 
----
+完成 MX1：224/16 的 patch 数量计算。
 
-# Day 2 — 高频数组：Sliding Window / Interval / Binary Search
+## Day 1 Exit
 
-## Learn（90 min）
-
-只学三个 invariant：
-
-### Sliding Window
-- 当前窗口代表什么；
-- 何时移动 left；
-- 为什么 left 不回退。
-
-### Interval
-- 为什么先排序；
-- 当前 merged interval 代表什么。
-
-### Binary Search
-- 搜索区间定义；
-- 循环条件；
-- 每次为什么一定缩小。
-
-## P0 Practice
-
-1. LC3 模式 — 25 min；
-2. LC56 模式 — 25 min；
-3. LC33 模式 — 30 min。
-
-## Variant
-
-只从下面选 1 道迁移验证：
-
-- LC153 模式；或
-- LC121 模式。
-
-不要两道都刷。
-
-## Exit Gate
-
-LC3 必须 ≥8；LC56/LC33 至少一题 ≥8，另一题 ≥7。
+- Foundation Gate 通过，或明确只剩 1–2 个语法点；
+- Two Sum 暴力版能独立解释；
+- 知道 ViT 会把图像切成 tokens。
 
 ---
 
-# Day 3 — Tree / Grid / BFS-DFS
+# Day 2 — Easy Coding + ViT 基础
 
-## Learn（60–90 min）
+## Coding P0（3 h）
 
-掌握：
+从 `LEETCODE_CORE_15.md`：
 
-- queue BFS；
-- recursion / explicit stack DFS；
-- visited 的时机；
-- 二叉树 level boundary；
-- grid 四方向遍历。
+1. LC1 HashMap 版本；
+2. LC20 Stack；
+3. LC206 Reverse Linked List。
 
-## P0 Practice
+LC165 如果时间够再做。
 
-1. LC102 模式 — 20 min；
-2. LC200 模式 — 30 min。
+规则：
+- 先允许 brute force；
+- 再问如何优化；
+- 每题必须自己给 2 个测试。
 
-LC200 完成后必须口述另一种 BFS/DFS 实现。
+## Python micro repair
 
-## Variant
+只有出现具体 API/语法错误时补 5–10 min，不回去重刷 Level 0。
 
-二选一：
+## MLLM（2 h）
 
-- LC112 路径总和；
-- 岛屿面积类 grid variant。
+M3–M5：
+- position embedding；
+- self-attention 直觉；
+- ViT vs CNN。
 
-## Eval 插针（45 min）
+必须会回答：
+- patch 变小为什么 token 数增加；
+- 高分辨率为什么贵。
 
-做 `CORE_12.md` 中 B1 evaluator coding。
+## Day 2 Exit
 
-目的不是抢算法时间，而是保持岗位相关 coding 优势。
-
-## Exit Gate
-
-LC200 ≥8；树/图遍历不能再因模板语法卡住；B1 ≥7。
-
----
-
-# Day 4 — Heap + LRU + 链表实现能力
-
-## Learn（90 min）
-
-### Heap
-- min-heap 为什么适合保留 Top-K；
-- O(n log k)；
-- Python `heapq` 基本 API。
-
-### LRU
-- 为什么需要 HashMap + Doubly Linked List；
-- head/tail sentinel；
-- move-to-front / remove / insert 的职责。
-
-## P0 Practice
-
-1. LC215 模式 — 30 min；
-2. LC146 模式 — 40–45 min。
-
-## 链表强化
-
-根据 Day1 LC206 表现：
-
-- 如果 LC206 已 MASTERED：尝试 LC25 的分段框架；
-- 如果 LC206 仍不稳：不碰 LC25，先做同模式链表变式。
-
-## Eval 插针（60 min）
-
-做 B2 Judge Aggregation 或 B3 batch evaluator 二选一。
-
-## Exit Gate
-
-LC215 ≥8；LC146 ≥7.5；能清楚解释 LRU 的 O(1) 从哪里来。
+- 至少 2 道 Easy ≥7.5；
+- LC1 必须能解释 dict 里存什么；
+- 能画最简 ViT 数据流。
 
 ---
 
-# Day 5 — 字节公开面经强化题
+# Day 3 — Sliding Window / Binary Search + MLLM 架构
 
-这一天才引入少量更难模式，不提前学一堆 DP。
+## Coding（3 h）
 
-## Practice 1 — LC221 最大正方形
+P0：
+- LC3 Sliding Window；
+- LC33 Binary Search。
 
-Learn 20–30 min：只理解这个 DP 状态，不系统学 DP 大全。
+P1：
+- LC56 Interval merge。
 
-Timed：30 min。
+目标不是一次写对所有 Medium，而是：
+- 能先给 brute force；
+- 能说清 invariant；
+- 能跟随最小反例 debug。
 
-## Practice 2 — LC32 最长有效括号
+## MLLM（2–2.5 h）
 
-先尝试 30 min；失败后再进入 Stack mini-lesson。
+M6–M8：
+- vision encoder → visual features；
+- projector / adapter；
+- LLM token space；
+- LLaVA 两阶段直觉；
+- Q-Former/resampler。
 
-## Practice 3 — sqrt(x)
+完成 MX3 shape walkthrough：
 
-分别实现：
+`[B,576,1024] → projector → [B,576,4096]`
 
-- binary search；
-- Newton iteration。
+## Post-training 预热（45 min）
 
-目标不是背公式，而是能解释停止条件和精度。
+P1：Pretraining vs SFT。
 
-## 岗位设计题（60–90 min）
+## Day 3 Exit
 
-做 C1：如何可信比较两个医疗 LLM。
-
-## Exit Gate
-
-三道 Coding 强化题至少 2 道 ≥7.5；C1 ≥8。
-
----
-
-# Day 6 — Mixed Interview：陌生题面迁移
-
-停止按专题顺序刷。
-
-## Mock Coding A（45 min）
-
-DeepSeek 从已学模式中随机出 1 道变式，隐藏 LeetCode 编号/标签。
-
-## Mock Coding B（45 min）
-
-再随机 1 道不同模式。
-
-## Stretch（45 min）
-
-如果基础链表稳定，做 LC25；否则随机回测最弱模式。
-
-## Eval/System（90 min）
-
-二选一主练，另一题只做 10 min 框架：
-
-- C2 Benchmark shortcut/leakage；
-- D1 100 万回答 × 3 Judge。
-
-## Exit Gate
-
-两道陌生题面 Coding 平均 ≥7.5，且至少一题 ≥8。
-
-如果模式识别仍不稳定，Day7 不学新题，只回测弱项。
+- LC3/LC33 至少一题 PASS；
+- 能画 image → encoder → projector → LLM；
+- 能解释 projector 为什么需要。
 
 ---
 
-# Day 7 — 两轮真实 60 分钟技术面
+# Day 4 — BFS/DFS/Heap + Detail Caption / High Resolution
 
-今天不学习新算法。
+## Coding（3 h）
 
-## Mock 1
+P0：
+- LC102 Tree BFS；
+- LC200 Grid DFS/BFS；
+- LC215 Top-K Heap。
 
-- 5 min：项目/自我介绍；
-- 35 min：一题牛客/LeetCode 风格 Coding；
-- 15 min：Eval/Data/System 追问；
-- 5 min：代码复杂度和边界追问。
+LC200 是重点。
 
-结束只记录：
+必须会：
+- visited 什么时候标；
+- DFS vs BFS；
+- heap 为什么是 O(n log k)。
 
-- 最大 Coding 风险 1 个；
-- 最大表达风险 1 个。
+## MLLM（2 h）
 
-## Repair（90 min）
+M9–M12：
+- Detail Caption；
+- high-resolution / tile / multi-scale；
+- hallucination；
+- medical MLLM evaluation。
 
-只补最大 Coding 风险。
+完成二选一：
+- MX4 医疗 Detail Caption schema；
+- MX5 小病灶高分辨率方案。
 
-## Mock 2
+## Medical Eval（45 min）
 
-同结构，再来一轮不同题面。
+用 `CORE_12.md` 的 C1，只回答“医疗 MLLM 如何可信比较两个模型”，限制 15 min。
 
-## 最终通过线
+## Day 4 Exit
 
-- Easy：基本 15 min 内完成；
-- 常见 Medium：25–35 min 内有正确主解；
-- 15 个核心中 Level1 全会、Level2 至少 6/7 PASS；
-- 近期字节强化模式至少 2 个能完成；
-- Eval/System 不成为短板；
-- Mock 2 Coding ≥7.5，整体 ≥8。
+- LC200 ≥7.5；
+- LC215 至少能独立写 heap 版；
+- 能解释为何小病灶对 resize 敏感；
+- 能列出医疗 MLLM hallucination 的 3+ 来源。
 
 ---
 
-# 明确不做
+# Day 5 — LRU / Coding 强化 + SFT / LoRA
 
-一周内不系统刷：
+## Coding（3 h）
+
+- LC146 LRU；
+- 回测当前最弱的一个模式；
+- 如果 LC206 已稳定，再尝试 LC25 分段思想；否则不做 LC25。
+
+LRU 最低要求：
+- 能解释 HashMap + Doubly Linked List；
+- 能画 get/put/update/evict 数据流。
+
+## Post-training（2.5 h）
+
+P1–P4：
+- Pretraining vs SFT；
+- LoRA；
+- SFT data schema；
+- packing / masking。
+
+完成 PX2：最小 LoRA 实验设计。
+
+不要求真正写 trainer，但必须回答：
+- baseline；
+- train/val/test；
+- overfit；
+- eval slices；
+- regression。
+
+## Day 5 Exit
+
+- LRU 能完整解释，最好 ≥7；
+- LoRA 能解释低秩增量直觉；
+- 能设计一个小型医疗 SFT/LoRA 实验。
+
+---
+
+# Day 6 — Mixed Coding + Preference / RL
+
+今天开始打乱专题。
+
+## Coding Mock A（45 min）
+
+随机已学模式，隐藏标签。
+
+## MLLM Follow-up（45 min）
+
+随机 M1–M12，必须包含一个 shape / failure / medical transfer 追问。
+
+## Coding Mock B（45 min）
+
+换一个模式。
+
+## Post-training（2–2.5 h）
+
+P5–P12：
+- preference data；
+- DPO；
+- reward model/verifier；
+- PPO 直觉；
+- GRPO 直觉；
+- KL；
+- rollout cost。
+
+重点不是公式，而是 training signal 和 failure mode。
+
+完成：
+- PX4 医疗 RL reward；
+- PX5 reward hacking 案例。
+
+## Medical Eval / System（45 min）
+
+C2 或 D1 二选一。
+
+## Day 6 Exit
+
+- 两道陌生 Coding 至少一题 ≥7.5；
+- MLLM 随机问答 ≥8；
+- 能说清 SFT / DPO / PPO/GRPO 分别在解决什么问题；
+- 能主动提 reward hacking。
+
+---
+
+# Day 7 — 两轮全真技术面
+
+不新增知识。
+
+## Mock 1（60 min）
+
+建议结构：
+
+- 5 min：项目/科研背景；
+- 30 min：牛客/LeetCode 风格 Coding；
+- 15 min：MLLM/ViT；
+- 7 min：SFT/RL；
+- 3 min：候选人反问。
+
+## Repair（90–120 min）
+
+只修一个最大淘汰风险。
+
+排序优先级：
+
+1. Coding 基础崩溃；
+2. MLLM 完全空白；
+3. Post-training 机制混乱；
+4. 表达问题；
+5. 已经较强的医疗/Eval。
+
+## Mock 2（60 min）
+
+换 Coding 模式和 MLLM 问题。
+
+---
+
+# 最终 Gate
+
+## Coding
+
+- Foundation 已通过；
+- Easy 可独立；
+- LC3 / LC200 / LC215 至少 PASS；
+- Binary Search / Stack / Linked List 至少不空白；
+- 陌生 Medium 能从 brute force 开始。
+
+## MLLM
+
+- ViT 核心结构可解释；
+- image → vision encoder → bridge → LLM 可画；
+- Detail Caption / high-resolution / hallucination 能回答；
+- 至少 2 个迁移小题 ≥8。
+
+## Post-training
+
+- SFT / LoRA / preference / DPO / PPO/GRPO 的关系不混乱；
+- 能设计最小实验；
+- 能讨论 reward hacking / safety。
+
+## 综合
+
+Mock 2：
+- Coding ≥7；
+- MLLM ≥8；
+- Post-training ≥7.5；
+- 无“完全看不懂题面”的基础性崩溃。
+
+---
+
+# 一周明确不学
 
 - Hot100 全套；
+- LeetCode Hard 题海；
 - DP 大全；
-- 图最短路大全；
-- 线段树 / 红黑树；
-- 冷门数学竞赛；
-- 大量 LeetCode Hard。
+- 线段树/红黑树；
+- CNN/ViT 所有论文谱系；
+- PPO/GRPO 完整数学推导；
+- 从零搭大型训练基础设施；
+- 医学百科背诵。
 
-LC25 是唯一保留的 Hard 级 stretch，因为它是字节长期代表性高频链表题；如果时间不够，可以放弃它而不影响整体计划。
-
-**原则始终是：少而精，先把正常 Medium 做稳。**
+**目标是跨过真实面试门槛，不是七天完成计算机本科 + MLLM 博士训练。**
