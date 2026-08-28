@@ -1,95 +1,161 @@
-# PROGRESS — DeepSeek 训练状态（V2）
+# PROGRESS — V3 Medical MLLM Algorithm Interview
 
-> 只记录能影响下一题选择的信息。完整跨对话状态使用 `SESSION_STATE.md`。
+> 只记录会影响下一步训练选择的信息。
 
 ## 当前状态
 
 ```yaml
 current_day: 1
-current_phase: A
-current_pattern: LC1-pattern
-status: NOT_STARTED
+current_mode: FOUNDATION
+foundation_status: NOT_PASSED
+current_task: Z1
+biggest_risk: PYTHON_FOUNDATION
 ```
 
-状态只使用：
+---
 
-`NOT_STARTED → LEARNING → BORDERLINE → PASS/RETEST-DUE → MASTERED`
+# Track A — Python Foundation
+
+状态：`NOT_STARTED / LEARNING / PASSED`
+
+- [ ] list / index
+- [ ] variable / expression
+- [ ] for loop
+- [ ] if condition
+- [ ] function / return
+- [ ] dict key-value
+- [ ] Z15 frequency dict independent
+- [ ] Z16 last-position dict independent
+- [ ] Z17 complement reasoning independent
+- [ ] Z18 Two Sum brute force independent
+
+**Foundation Gate：Z15–Z18 至少 3/4 独立完成 + 六个基础概念可解释。**
+
+通过后：
+
+```yaml
+foundation_status: PASSED
+```
+
+之后不要因为单个语法 bug 把整个训练退回 Level 0。
 
 ---
 
-# Core 15 Mastery Map
+# Track B — Algorithm Coding
 
-## Level 1 — 基础反射
+状态：`NOT_STARTED / LEARNING / BORDERLINE / PASS_RETEST_DUE / MASTERED`
 
-- [ ] LC1 pattern — HashMap
-- [ ] LC20 pattern — Stack
-- [ ] LC165 pattern — String parsing
-- [ ] LC206 pattern — Linked List reverse
+## Easy / Foundation Algorithm
 
-## Level 2 — 高频 Medium
+- [ ] LC1 HashMap
+- [ ] LC20 Stack
+- [ ] LC165 String parsing
+- [ ] LC206 Linked List reverse
 
-- [ ] LC3 pattern — Sliding Window
-- [ ] LC56 pattern — Interval merge
-- [ ] LC102 pattern — Tree BFS
-- [ ] LC200 pattern — Grid DFS/BFS
-- [ ] LC215 pattern — Heap / Top-K
-- [ ] LC33 pattern — Binary Search
-- [ ] LC146 pattern — LRU
+## 高频 Medium
 
-## Level 3 — 强化
+- [ ] LC3 Sliding Window
+- [ ] LC56 Interval
+- [ ] LC102 Tree BFS
+- [ ] LC200 Grid DFS/BFS
+- [ ] LC215 Heap / Top-K
+- [ ] LC33 Binary Search
+- [ ] LC146 LRU
 
-- [ ] LC221 pattern — Basic DP
-- [ ] LC32 pattern — Parentheses / Stack
-- [ ] sqrt pattern — Binary search + Newton
-- [ ] LC25 pattern — K-group linked list
+## Stretch
 
-### MASTERED V2 标准
+- [ ] LC221 Basic DP
+- [ ] LC32 Parentheses
+- [ ] sqrt Binary Search / Newton
+- [ ] LC25 K-group Linked List
 
-不是“连续刚做两题都对”。必须：
+Mastery 仍要求延迟无提示复测。
 
-1. 至少一次正式无 Hint 2/3 作答 ≥8；
-2. 进入 `PASS/RETEST-DUE`；
-3. 隔至少 3 道其他题，或下一次 session；
-4. 做同模式不同题面的**无提示延迟复测**；
-5. 再次 ≥8 才勾选 `MASTERED`。
+### Coding Retest Queue
 
-已 MASTERED 模式若 Mock 回测 <7.5，取消勾选并改回 `RETEST-DUE`。
-
----
-
-# Retest Queue
-
-| Pattern | First pass score | Hint level | Earliest retest | Retest score | Status |
+| Pattern | First pass | Hints | Earliest retest | Retest | Status |
 |---|---:|---:|---|---:|---|
-|  |  | 0 | after 3 other questions / next session |  |  |
+|  |  | 0 | after 3 other units / next session |  |  |
 
 ---
 
-# 岗位能力状态
+# Track C — MLLM / ViT
 
-每约 3 道 Coding 穿插一次，不替代算法主线。
+状态：`NOT_STARTED / LEARNING / PASS / MASTERED`
+
+- [ ] M1 Image → patch tokens
+- [ ] M2 Patch embedding
+- [ ] M3 Position embedding
+- [ ] M4 Self-attention intuition
+- [ ] M5 ViT vs CNN
+- [ ] M6 Vision encoder → bridge → LLM
+- [ ] M7 LLaVA-style alignment / instruction tuning
+- [ ] M8 Q-Former / resampler
+- [ ] M9 Detail Caption
+- [ ] M10 High-resolution / tiling / token cost
+- [ ] M11 MLLM hallucination
+- [ ] M12 Medical MLLM evaluation
+
+### Practice
+
+- [ ] MX1 patch/token calculation
+- [ ] MX3 projector shape walkthrough
+- [ ] MX4 detail-caption schema OR MX5 high-res lesion design
+
+MLLM MASTERED：不同上下文/shape/医疗案例迁移后仍 ≥8。
+
+---
+
+# Track D — SFT / LoRA / Preference / RL
+
+- [ ] P1 Pretraining vs SFT
+- [ ] P2 LoRA
+- [ ] P3 SFT data schema
+- [ ] P4 Packing / masking
+- [ ] P5 Preference data
+- [ ] P6 DPO intuition
+- [ ] P7 Reward model / verifier
+- [ ] P8 Why RL
+- [ ] P9 PPO interview intuition
+- [ ] P10 GRPO interview intuition
+- [ ] P11 KL
+- [ ] P12 Rollout cost
+
+### Practice
+
+- [ ] PX2 Minimal LoRA experiment
+- [ ] PX4 Medical RL reward
+- [ ] PX5 Reward hacking
+
+---
+
+# Track E — Medical Eval / Benchmark / System
+
+只保持优势，不重复刷熟题。
 
 - [ ] B1 evaluator metrics
 - [ ] B2 judge aggregation
-- [ ] B3 async / retry / resume
-- [ ] C1 trustworthy medical model comparison
-- [ ] C2 shortcut / leakage audit
-- [ ] D1 million-scale judge system
-- [ ] D2 continuous regression system
+- [ ] B3 async/retry/resume
+- [ ] C1 medical model comparison
+- [ ] C2 shortcut/leakage
+- [ ] D1 scalable judge system
+- [ ] D2 continuous regression
 
 ---
 
 # Attempt Log
 
-| Date | Problem/Pattern | Attempt | Score | Primary error | Fatal issue | Hint | Next |
-|---|---|---:|---:|---|---|---:|---|
-|  |  |  |  |  |  | 0 |  |
+| Date | Track | Task | Result/Score | Primary error | Hint | Next |
+|---|---|---|---:|---|---:|---|
+|  |  |  |  |  | 0 |  |
 
 ## Primary Error Types
 
-每题只选一个：
-
+Coding/Foundation：
+- `READING_INPUT`
 - `SYNTAX_API`
+- `INDEXING`
+- `CONTROL_FLOW`
 - `PATTERN_RECOGNITION`
 - `INVARIANT`
 - `IMPLEMENTATION`
@@ -97,63 +163,42 @@ status: NOT_STARTED
 - `COMPLEXITY`
 - `DEBUGGING`
 - `EXPLANATION`
-- `EVAL_ENGINEERING`
+
+MLLM/Post-training：
+- `CONCEPT`
+- `DATA_FLOW`
+- `TENSOR_SHAPE`
+- `TRAINING_OBJECTIVE`
+- `FAILURE_MODE`
+- `TRADEOFF`
+- `MEDICAL_TRANSFER`
+
+每个训练单元只记录一个主要根因。
 
 ---
 
-# 5-Question Checkpoints
-
-每完成 5 道正式题，保存：
+# Checkpoint Template
 
 ```text
-Mastered:
-Pass / retest due:
-Borderline:
-Biggest risk:
-Most common failure type:
-Hints used:
-Next priority:
-```
-
-随后同步一份 `SESSION_STATE.md` 格式 YAML，便于换新 DeepSeek 对话。
-
----
-
-# 今日收尾
-
-```text
-Today mastered:
--
-
-Retest due:
--
-
-Still risky (max 2):
--
--
-
-Tomorrow first task:
--
-
-One invariant I must remember:
--
+Foundation: ...
+Coding: mastered / pass-retest / biggest gap
+MLLM: ...
+Post-training: ...
+Medical Eval: ...
+Biggest interview risk: ...
+Next priority: ...
 ```
 
 ---
 
-# 面试前最终检查
+# Final Gate
 
-- [ ] Easy 题约 15–20 min 能独立完成
-- [ ] 常见 Medium 25–35 min 内能形成正确主解
-- [ ] LC3 / LC200 / LC215 / LC146 至少 PASS，关键模式完成延迟复测
-- [ ] 链表不会因 pointer 更新顺序卡住
-- [ ] Tree/Grid BFS/DFS 能闭卷写
-- [ ] Binary Search 边界定义清楚
-- [ ] 主动讲时间/空间复杂度
-- [ ] 每道 Coding 主动测至少 2 个 edge cases
-- [ ] 代码错时能用失败用例自己 trace，而不是等答案
-- [ ] 遇到陌生题先给 brute force，再优化
-- [ ] Evaluator 会处理 empty/missing/duplicate/malformed
-- [ ] Eval 设计知道 independent truth / judge calibration
-- [ ] System 设计知道 retry / idempotency / provenance
-- [ ] 至少一次 60 min Mock 整体 ≥8/10
+- [ ] Foundation PASSED
+- [ ] Easy Coding 不再因题意/语法崩溃
+- [ ] LC3 / LC200 / LC215 至少 PASS
+- [ ] MLLM M1–M8 大部分可独立解释
+- [ ] Detail Caption / high-resolution / hallucination 可回答
+- [ ] SFT / LoRA / DPO / PPO-GRPO 关系不混乱
+- [ ] 至少完成 1 个 LoRA 实验设计
+- [ ] 至少完成 1 个医疗 RL reward 设计
+- [ ] 一轮 60 min Mock 无基础性崩溃
