@@ -1,233 +1,214 @@
-# LEETCODE CORE 15 — 小荷 / 字节技术面最小题集
+# LEETCODE CORE 15 — V3 算法锚点
 
-> 目标不是刷 Hot 100，而是用 15 道题覆盖这次面试最可能出现的牛客 / LeetCode 风格能力。
+> 这 15 道不是起点，而是 `PYTHON_LEVEL0.md` 通过后的算法主线。
 >
-> 题目选择依据：近期字节大模型/算法面经、小荷健康实习面经，以及 CodeTop/LeetcodeTop 长期字节高频统计。这里只保存题号、能力与自有概述，不复制平台原题正文。
+> 目标不是记题号，而是掌握可迁移的 invariant / data structure / debugging 能力。
 
-## 训练规则
+## 进入条件
 
-- 面试训练时，教练**不得先告诉你 LeetCode 编号、题名、标签或算法模式**。
-- 每题先按真实面试方式改写题面；评分结束后才揭示对应题。
-- 同一模式连续两次 ≥8/10 才算 MASTERED。
-- 一道题看过标准答案后，**当天不算通过**；至少隔 2 小时闭卷重写或做同模式变式。
-- P0 必须掌握；P1 根据进度补；不继续扩展到 Hot100。
+只有满足以下条件后才开始正式 Core 15：
+
+- `FOUNDATION_PASSED`；或
+- 至少已经能看懂输入输出、写 for/if/function，并能完成 Two Sum 暴力版。
+
+如果还看不懂 `nums[i]`，回到 `PYTHON_LEVEL0.md`，不要硬刷本文件。
+
+## V3 Mastery
+
+- 第一次无 Hint 2/3 ≥8：`PASS_RETEST_DUE`；
+- 隔至少 3 个其他训练单元或下一 session；
+- 做不同题面、无提示变式再次 ≥8；
+- 才是 `MASTERED`。
+
+刚看完答案立即重写不算 mastery。
 
 ---
 
-# Level 1 — 热身：先保证不会因基础 Coding 挂掉
+# Level 1 — Easy 生存线
 
-## L1-1 — LC 1 两数之和
+## A1 — LC1 Two Sum
 
-**能力：** HashMap / 一次扫描 / 边界意识  
-**自有概述：** 给定整数序列和目标值，找两个不同位置，使它们的和等于目标。  
-**目标：** 10–15 min，O(n)。
+**模式：** HashMap / complement
 
-必须会解释：
-- 为什么查“补数”可以 O(n)；
-- 为什么不能先把所有数放进 set 就结束；
-- 重复值如何处理。
+最低要求：
+- 先能写 O(n²)；
+- 再理解 `need = target - x`；
+- dict 保存 `value -> index`；
+- 解释为什么先查再存。
 
-## L1-2 — LC 20 有效的括号
+目标：15–20 min。
 
-**能力：** Stack / 状态匹配  
-**自有概述：** 判断一串不同类型的左右括号是否以合法顺序闭合。  
-**目标：** 10–15 min。
+## A2 — LC20 Valid Parentheses
 
-必须会解释：
-- 栈里保存什么 invariant；
-- 何时可以提前返回 False；
-- 空串如何定义。
+**模式：** Stack
 
-## L1-3 — LC 165 比较版本号
+必须会：
+- 栈里保存什么；
+- 何时提前 False；
+- 结束时为什么检查栈为空。
 
-**能力：** String parsing / 双指针或分割 / 边界  
-**为什么放进来：** 2026 年小荷健康 AI 全栈实习一面公开面经出现过。  
-**自有概述：** 比较由点分隔的版本号，各段按整数比较，缺失段视为 0。  
-**目标：** 15–20 min。
+目标：15–20 min。
+
+## A3 — LC165 Compare Version Numbers
+
+**模式：** String parsing / two pointers or split
 
 必须覆盖：
 - 前导零；
 - 段数不同；
-- 全部相同；
-- 超长数字时语言实现的取舍。
+- 缺失段视为 0。
 
-## L1-4 — LC 206 反转链表
+目标：20 min。
 
-**能力：** Linked List / pointer invariant  
-**目标：** 10–15 min，闭眼级熟练。
+## A4 — LC206 Reverse Linked List
 
-必须能：
-- 迭代写；
-- 说清 `prev / cur / next` 每一步的含义；
-- 解释为什么要先保存 next。
+**模式：** Linked List pointer invariant
+
+必须解释：
+- `prev / cur / next`；
+- 为什么先保存 `next`；
+- 空链表 / 单节点。
+
+目标：20 min。
 
 ---
 
-# Level 2 — 高频 Medium：这部分是主战场
+# Level 2 — 高频 Medium 主战场
 
-## L2-1 — LC 3 无重复字符的最长子串
+## B1 — LC3 Longest Substring Without Repeating Characters
 
-**能力：** Sliding Window + HashMap  
-**字节长期高频。**  
-**自有概述：** 求字符串中不含重复字符的最长连续区间长度。  
-**目标：** 20–25 min。
+**模式：** Sliding Window + HashMap
 
 必须会：
-- `left` 只向右移动；
-- last-seen index 写法；
-- 说明 O(n) 的原因。
+- window 表示什么；
+- left 为什么只右移；
+- last-seen index；
+- O(n) 为什么成立。
 
-## L2-2 — LC 56 合并区间
+## B2 — LC56 Merge Intervals
 
-**能力：** Sorting + interval invariant  
-**目标：** 20–25 min。
+**模式：** Sorting + interval invariant
 
 必须会：
 - 为什么先排序；
-- 相交与不相交的判断；
-- touching intervals 是否合并取决于题意。
+- 当前 merged interval 的含义；
+- overlap / non-overlap。
 
-## L2-3 — LC 102 二叉树的层序遍历
+## B3 — LC102 Binary Tree Level Order Traversal
 
-**能力：** BFS + Queue + level boundary  
-**目标：** 20 min。
+**模式：** BFS + Queue
 
 必须会：
-- 用当前队列长度固定一层；
+- 当前层大小；
 - 空树；
-- 与 DFS 的取舍。
+- BFS 与 DFS 的差异。
 
-## L2-4 — LC 200 岛屿数量
+## B4 — LC200 Number of Islands
 
-**能力：** Grid DFS / BFS / visited  
-**为什么放进来：** 2026 年字节大模型/算法公开面经明确出现，并要求 DFS/BFS。  
-**目标：** 25–30 min。
+**模式：** Grid DFS/BFS
+
+V3 核心重点。
 
 必须会：
-- DFS 和 BFS 至少都能讲；
-- 什么时候标记 visited，避免重复入队；
+- 四方向遍历；
+- visited 何时标；
+- DFS/BFS 至少一种能独立写，另一种能解释；
 - 递归深度风险。
 
-## L2-5 — LC 215 数组中的第 K 个最大元素
+## B5 — LC215 Kth Largest Element
 
-**能力：** Heap / Quickselect  
-**目标：** 25–30 min。
-
-最低要求：
-- min-heap 保持 K 个元素；
-- O(n log k)。
-
-加分：
-- 能讲 quickselect 平均 O(n)；
-- 不强求现场手写复杂 partition，除非面试官追问。
-
-## L2-6 — LC 33 搜索旋转排序数组
-
-**能力：** Binary Search + invariant  
-**目标：** 25–30 min。
-
-必须会解释：
-- 每轮至少一半仍然有序；
-- 如何判断 target 落在哪一半；
-- `<=` 与 `<` 的边界。
-
-## L2-7 — LC 146 LRU 缓存
-
-**能力：** HashMap + Doubly Linked List / API design  
-**面试高频实现题。**  
-**目标：** 35–45 min。
+**模式：** Heap / Top-K
 
 最低要求：
-- `get/put` 平均 O(1)；
-- 为什么单独 dict 不足；
-- 更新已有 key 与淘汰最旧 key。
+- min-heap size k；
+- O(n log k)；
+- 为什么不是必须全排序。
 
-允许 Python `OrderedDict` 作为第一版，但必须能解释若要求手写时的数据结构。
+Quickselect 只作为加分，不作为生存线。
+
+## B6 — LC33 Search in Rotated Sorted Array
+
+**模式：** Binary Search invariant
+
+必须会：
+- 每轮至少一半有序；
+- target 属于哪半；
+- `<= / <` 边界。
+
+## B7 — LC146 LRU Cache
+
+**模式：** HashMap + Doubly Linked List
+
+最低要求：
+- 能画数据结构；
+- `get / put / update / evict` 流程；
+- 为什么平均 O(1)。
+
+若现场手写链表仍困难，至少先用 `OrderedDict` 写可运行版，再解释手写结构。
 
 ---
 
-# Level 3 — 字节 / 大模型面经强化
+# Level 3 — 强化 / Stretch
 
-## L3-1 — LC 221 最大正方形
+## C1 — LC221 Maximal Square
 
-**能力：** Basic DP  
-**为什么放进来：** 2026 年字节大模型算法公开面经出现。  
-**自有概述：** 在 0/1 矩阵中找全部由 1 构成的最大正方形面积。  
-**目标：** 30 min。
+**模式：** Basic DP
 
-只学这一类 DP：
-- `dp[i][j]` 表示以该位置为右下角的最大边长；
-- 状态来自左、上、左上最小值 + 1。
+只学这个 DP 状态：
 
-## L3-2 — LC 32 最长有效括号
+> `dp[i][j]` = 以当前位置为右下角的最大正方形边长。
 
-**能力：** Stack / DP alternative / 边界  
-**为什么放进来：** 2026 年字节大模型/Agent 算法公开面经出现。  
-**目标：** 30–35 min。
+不扩成 DP 大全。
 
-最低要求：
-- 栈下标方案；
-- 理解 sentinel/base index 的作用。
+## C2 — LC32 Longest Valid Parentheses
 
-## L3-3 — 手写 sqrt(x)：二分 + 牛顿迭代
+**模式：** Stack / index sentinel
 
-**能力：** Binary search on answer + numerical iteration  
-**为什么放进来：** 2026 年字节大模型算法公开面经明确要求两种方法。  
-**目标：** 每种 15–20 min。
+重点理解 base index，不背代码。
 
-要求：
-- 先明确返回整数平方根还是浮点近似；
-- 二分停止条件；
-- 牛顿公式来源至少能直观解释；
-- 精度 / overflow 处理。
+## C3 — sqrt(x)
 
-## L3-4 — LC 25 K 个一组翻转链表
+**模式：** Binary Search on Answer + Newton
 
-**能力：** Linked List segment manipulation  
-**为什么放进来：** 字节长期高频榜代表性链表难题。  
-**目标：** 40–45 min；这是 CORE 15 中最难的一道。
+至少会二分；牛顿作为强化。
 
-训练要求不是背代码：
-- 能先写 `reverse_segment`；
-- 能处理不足 K 个节点；
-- 能清楚描述每组前后的连接关系。
+必须先澄清：整数平方根还是浮点近似。
 
-如果一周时间紧，这道做到 7/10 即可，不要求成为绝对熟练。
+## C4 — LC25 Reverse Nodes in K Group
+
+**模式：** Linked List segment manipulation
+
+唯一保留的 Hard stretch。
+
+如果一周时间紧，可以做到“能解释分组 + reverse segment + 连接关系”而不是强求闭卷满分。
 
 ---
 
-# 不纳入核心，但可作为同模式变式
+# 非核心变式池
 
-只有核心题已经稳定后才抽：
+只有为了验证迁移才抽，不形成第二份必刷题单：
 
-- LC 160 相交链表 — 链表双指针；
-- LC 415 字符串相加 — 字符串模拟；
-- LC 239 滑动窗口最大值 — deque；
-- LC 121 买卖股票最佳时机 — 一次扫描；
-- LC 155 最小栈 — 数据结构设计；
-- LC 153 寻找旋转排序数组中的最小值 — 二分；
-- LC 53 最大子数组和 — 一维 DP；
-- LC 112 路径总和 — 树 DFS。
-
-**这些不是第二份必刷题单。** 只有教练需要验证迁移能力时才使用。
+- LC160 相交链表；
+- LC121 买卖股票；
+- LC153 旋转数组最小值；
+- LC155 Min Stack；
+- LC112 Path Sum；
+- LC53 Maximum Subarray；
+- 简化版 Top-K / BFS / interval 业务题。
 
 ---
 
-# 一周通过线
+# 一周 V3 通过线
 
-核心 15 不要求全部 MASTERED。面试前达到：
+不要求 15/15 MASTERED。
 
-- Level 1：4/4 MASTERED；
-- Level 2：至少 6/7 达到 PASS，其中 LC3、LC200、LC215、LC146 必须会；
-- Level 3：至少 2/4 达到 PASS，且能听懂另外两题的思路；
-- 任意陌生 Medium：能先澄清题意、给出 brute force，再逐步优化，不空白。
+建议：
 
-最终目标：**题目换皮以后仍能识别 invariant，而不是只记住题号。**
+- Level 1：至少 3/4 PASS，LC1 必须会；
+- Level 2：LC3 / LC200 / LC215 至少 PASS；
+- LC33 / LC102 至少不空白；
+- LC146 至少能解释完整结构；
+- Level 3：至少理解 2 个，LC25 可放弃满熟练；
+- 陌生常见题：能先给 brute force，再逐步优化，而不是完全沉默。
 
-## 公开来源索引
-
-- CodeTop / LeetcodeTop：字节按公司/岗位汇总的高频题统计
-- 牛客：2026 字节大模型/算法实习面经
-- 牛客：2026 小荷健康 AI 全栈开发实习面经
-
-来源用于选择训练范围；训练题面由教练自行改写，不复制平台原文。
+**Coding 的第一目标是消除一票否决风险，不是成为竞赛选手。**
