@@ -1,61 +1,88 @@
-# SESSION STATE — DeepSeek 会话恢复模板
+# SESSION STATE — V3 跨对话恢复
 
-> 用途：DeepSeek 无法直接持久化训练状态时，每 5 题或每天结束生成一次。新对话把最近一份 YAML 一起发给它。
+> 每 5 个正式训练单元或每天结束时更新一次。
 
 ```yaml
 session_state:
+  version: V3
   date: ""
-  questions_completed: 0
-  current_phase: "Phase A"
-  current_priority: ""
+  units_completed: 0
+  current_day: 1
+  current_mode: FOUNDATION
 
-  mastered: []
-  pass_retest_due: []
-  borderline: []
-  learning: []
+  foundation:
+    status: NOT_PASSED
+    independent_skills: []
+    remaining_gaps: []
 
-  last_attempts:
-    # - pattern: "sliding_window"
-    #   anchor: "LC3-like"
-    #   score: 8.5
-    #   hints_used: 0
-    #   primary_error: null
-    #   retest_after_question: 0
+  coding:
+    mastered: []
+    pass_retest_due: []
+    borderline: []
+    learning: []
+    strongest_patterns: []
+    highest_risk_patterns: []
 
-  failure_counts:
+  mllm:
+    passed: []
+    learning: []
+    strongest_topics: []
+    highest_risk_topics: []
+
+  posttraining:
+    passed: []
+    learning: []
+    strongest_topics: []
+    highest_risk_topics: []
+
+  medical_eval:
+    passed: []
+    refresh_needed: []
+
+  primary_failure_counts:
+    READING_INPUT: 0
     SYNTAX_API: 0
+    INDEXING: 0
+    CONTROL_FLOW: 0
     PATTERN_RECOGNITION: 0
     INVARIANT: 0
     IMPLEMENTATION: 0
     BOUNDARY: 0
     COMPLEXITY: 0
     DEBUGGING: 0
-    EXPLANATION: 0
+    CONCEPT: 0
+    DATA_FLOW: 0
+    TENSOR_SHAPE: 0
+    TRAINING_OBJECTIVE: 0
+    FAILURE_MODE: 0
+    MEDICAL_TRANSFER: 0
 
-  hint_counts:
+  hints_used:
     hint_1: 0
     hint_2: 0
     hint_3: 0
     full_answer: 0
 
-  strongest_patterns: []
-  highest_risk_patterns: []
+  last_units: []
+  biggest_interview_risk: ""
   next_priority: ""
   next_action: ""
 ```
 
-## 更新规则
+## 恢复规则
 
-- 一次 ≥8：进入 `pass_retest_due`，不能直接进 `mastered`。
-- 延迟无提示变式再次 ≥8：才进入 `mastered`。
-- `MASTERED` 后 Mock <7.5：移回 `pass_retest_due`。
-- Hint 2/3 或完整答案完成的题不能直接提供 mastery 证据。
-- `primary_error` 每题只记录一个最主要根因。
+- `foundation.status = PASSED` 后，不因为单个语法 bug 重新退回完整 Level 0；
+- Coding PASS 仍需 delayed retest；
+- MLLM / Post-training 的“刚学会复述”不能直接标 mastered；
+- 如果某一 track 已明显强，不要为了平均题量继续刷；
+- `biggest_interview_risk` 优先决定下一步。
 
 ## 新对话恢复 Prompt
 
 ```text
-这是我上一轮训练状态。请把它作为当前真实进度，并结合仓库中的 DEEPSEEK_TUTOR.md V2 继续训练。不要重头开始，也不要展示题单。先检查哪些 RETEST-DUE 已满足延迟条件，再决定下一道单题。
+这是我上一轮 Medical MLLM Algorithm Interview Bootcamp V3 的状态。
+请先读取仓库中的 DEEPSEEK_TUTOR.md / START_TUTOR.md，再把下面 YAML 当作真实进度继续训练。
+不要重头 placement，不要展示完整题单。优先修复 biggest_interview_risk。
 
 <粘贴 YAML>
 ```
