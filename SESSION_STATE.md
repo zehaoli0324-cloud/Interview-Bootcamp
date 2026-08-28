@@ -7,7 +7,7 @@ session_state:
   version: V5
   date: "2026-08-28"
   active_track: SHARED   # SHARED / A / B
-  units_completed: 0
+  units_completed: 1
   current_mode: FOUNDATION_TO_PATTERN
 
   shared:
@@ -48,7 +48,9 @@ session_state:
             - check_before_store
             - same_value_different_index
             - function_parameter_vs_loop_value
+            - seen_contains_only_previous_values
           still_needed:
+            - mini_independent_python_gate
             - clean_anchor_retry
             - complexity_explanation
             - transfer_variant
@@ -107,13 +109,30 @@ session_state:
     full_answer: 0
 
   last_units:
-    - type: teaching
+    - date: "2026-08-28"
+      type: teaching
       skill: HashMap_TwoSum
-      result: "understood line-by-line and wrote full function after guided teaching"
+      result: "从几乎看不懂题目，推进到能理解 list/index/for/if/function/dict，并在指导后写出完整 Two Sum HashMap 主体"
+      strengths:
+        - tiny_trace
+        - complement_logic
+        - value_to_index_mapping
+        - check_before_store
+      observed_gaps:
+        - concrete_value_vs_code_rule
+        - state_timing_before_vs_after_store
+        - independent_function_call_and_clean_rewrite
       mastery_evidence: false
 
-  next_priority: "small independent Python coding gate, then clean HashMap anchor retry"
-  next_action: "FOUNDATION_TO_ANCHOR"
+  tomorrow_start:
+    step_1: "2-3 个超短独立 Python gate，确认不是只会跟着提示"
+    step_2: "Two Sum clean retry：只给题意和函数头，尽量独立写"
+    step_3: "若 Anchor ≥8，进入第一个 HashMap Transfer；否则只修一个根因再 retry"
+    step_4: "补时间/空间复杂度的一句话理解"
+    stop_condition: "完成 clean anchor 或明确定位一个剩余根因即可，不追求一次学多个 pattern"
+
+  next_priority: "mini independent Python gate → clean HashMap anchor retry"
+  next_action: "CLEAN_GATE_THEN_ANCHOR"
 ```
 
 ---
@@ -136,7 +155,7 @@ session_state:
 
 ```text
 读取 Interview-Bootcamp 中的 TUTOR V5、LEETCODE101_PYTHON_PATTERN_MAP.md、PROGRESS.md 和 SESSION_STATE.md。
-下面是上一轮 session_state，请从真实 current_pattern/current_stage 继续，不要重新从 list/index 开始，也不要把 guided completion 当成 MASTERED。
+下面是上一轮 session_state，请从 tomorrow_start 开始，不要重新从 list/index 开始，也不要把 guided completion 当成 MASTERED。
 如果 active_track=SHARED，就继续共享 Python/算法；如果是 A/B，再进入对应专项。
 
 <粘贴 YAML>
