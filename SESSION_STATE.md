@@ -1,27 +1,58 @@
-# SESSION STATE — V4 双岗位跨会话恢复
+# SESSION STATE — V5 Pattern-First + 双岗位跨会话恢复
 
-> Shared Coding 共享；Track A / B 专项分别保存。
+> Shared Python/Coding 共享；Track A / B 专项分别保存。
 
 ```yaml
 session_state:
-  version: V4
-  date: ""
-  active_track: A   # A or B
+  version: V5
+  date: "2026-08-28"
+  active_track: SHARED   # SHARED / A / B
   units_completed: 0
-  current_mode: FOUNDATION
+  current_mode: FOUNDATION_TO_PATTERN
 
   shared:
     foundation:
-      status: NOT_PASSED
-      independent_skills: []
-      remaining_gaps: []
+      status: LEARNING
+      independent_skills:
+        - list_index
+        - variable_assignment
+        - for_range
+        - if_comparison
+        - function_return
+        - dict
+        - len_range
+        - tiny_trace
+      remaining_gaps:
+        - set
+        - formal_foundation_exit_gate
+        - independent_code_rule_generation
+
     coding:
+      current_pattern: HASHMAP
+      current_stage: ANCHOR_LEARNING
+      anchor_passed: []
+      transfer_passed: []
       mastered: []
-      pass_retest_due: []
-      borderline: []
-      learning: []
+      retest_due: []
+      learning:
+        - HashMap_TwoSum
       strongest_patterns: []
-      highest_risk_patterns: []
+      highest_risk_patterns:
+        - code_rule_generation
+
+      pattern_evidence:
+        HashMap_TwoSum:
+          understands:
+            - value_to_index
+            - complement_need
+            - check_before_store
+            - same_value_different_index
+            - function_parameter_vs_loop_value
+          still_needed:
+            - clean_anchor_retry
+            - complexity_explanation
+            - transfer_variant
+            - delayed_retest
 
   track_a:
     evaluator_data_coding:
@@ -75,26 +106,38 @@ session_state:
     hint_3: 0
     full_answer: 0
 
-  last_units: []
-  next_priority: ""
-  next_action: ""
+  last_units:
+    - type: teaching
+      skill: HashMap_TwoSum
+      result: "understood line-by-line and wrote full function after guided teaching"
+      mastery_evidence: false
+
+  next_priority: "small independent Python coding gate, then clean HashMap anchor retry"
+  next_action: "FOUNDATION_TO_ANCHOR"
 ```
 
-## 恢复规则
+---
 
+# V5 恢复规则
+
+- `active_track = SHARED` 表示只练两个岗位共用的 Python/算法；
 - Foundation/Coding 状态跨 A/B 共享；
 - Track A 专项不能自动写入 Track B passed；
 - Track B 专项不能自动写入 Track A passed；
 - `foundation.status = PASSED` 后，不因单个语法 bug 退回完整 Level 0；
-- Shared Coding PASS 仍需 delayed retest；
-- 每次开始先读 `active_track`；
-- 切换 Track 时保留 shared 状态，只切换专项题库。
+- 一个 Anchor 做对不能直接 MASTERED；
+- Shared Coding Pattern 必须按：`Anchor → Transfer → spacing → Delayed Retest`；
+- 切换 Track 时保留 shared 状态，只切换专项题库；
+- 已在 Teaching Mode 大量提示下完成的题，不算独立 mastery evidence。
 
-## 新对话恢复
+---
+
+# 新对话恢复
 
 ```text
-读取 Interview-Bootcamp 中的 TUTOR V4 和 PROGRESS。
-下面是上一轮 session_state，请按 active_track 继续；不要重新 placement，也不要混合两个岗位专项。
+读取 Interview-Bootcamp 中的 TUTOR V5、LEETCODE101_PYTHON_PATTERN_MAP.md、PROGRESS.md 和 SESSION_STATE.md。
+下面是上一轮 session_state，请从真实 current_pattern/current_stage 继续，不要重新从 list/index 开始，也不要把 guided completion 当成 MASTERED。
+如果 active_track=SHARED，就继续共享 Python/算法；如果是 A/B，再进入对应专项。
 
 <粘贴 YAML>
 ```
